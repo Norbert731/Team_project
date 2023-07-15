@@ -22,8 +22,9 @@ DateOfBirth DATE,
 Position VARCHAR(50),
 Phone VARCHAR(50),
 Address VARCHAR(50) )
-INSERT INTO ContactsList (ContactID, UserID, FirstName, LastName, Email,Gender,City) VALUES (1, 1, Joe, Doe, JoeDoe@mail.com,male,Warsaw);
-INSERT INTO Employees (userID, FirstName, LastName, Email, DateOfBirth, Position, Phone, Address)
+GO
+INSERT INTO Employees 
+(userID, FirstName, LastName, Email, DateOfBirth, Position, Phone, Address)
 VALUES (1, 'John', 'Doe', 'john.doe@example.com', '1990-01-01', 'Manager', '123456789', '123 Main St');
 INSERT INTO Employees (userID, FirstName, LastName, Email, DateOfBirth, Position, Phone, Address)
 VALUES (2, 'Jane', 'Smith', 'jane.smith@example.com', '1995-05-10', 'Sales Representative', '987654321', '456 Elm St');
