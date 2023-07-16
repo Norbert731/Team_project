@@ -12,77 +12,106 @@ const ContactPopup = ({ togglePopup, user, setUser }) => {
     firstName: "",
     lastName: "",
     email: "",
-    gender: "",
-    city: "",
+    dateOfBirth: "",
+    position: "",
+    phone: "",
+    address: "",
   });
 
   useEffect(() => {
     if (user) {
-      setContact(user);
+      // Convert the date to "yyyy-MM-dd" format
+      const formattedDate = user.dateOfBirth.split("T")[0];
+      setContact((prevContact) => ({
+        ...prevContact,
+        ...user,
+        dateOfBirth: formattedDate,
+      }));
     }
   }, [user]);
+  useEffect(() => {
+    if (!user) {
+      console.log(contact);
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       let response;
-      console.log(user);
       if (user) {
         // Existing contact
         response = await axios.put(
-          `https://localhost:7265/api/ContactsList/${contact.contactID}`,
-          contact
+          `https://localhost:7265/api/Employees/${contact.employeeID}`,
+          { ...contact, employeeID: contact.employeeID }
         );
       } else {
+        console.log("post");
+        console.log(user);
         // New contact
         response = await axios.post(
-          `https://localhost:7265/api/ContactsList`,
+          `https://localhost:7265/api/Employees`,
           contact
         );
       }
 
-      if (response.status === 201) {
-        console.log("Contact saved successfully");
+      if (response.status === 201 || response.status === 204) {
+        console.log("Employee saved successfully");
         // Reset the form
         setContact({
-          userID: 0,
+          userID: userId,
           firstName: "",
           lastName: "",
           email: "",
-          gender: "",
-          city: "",
+          dateOfBirth: "",
+          position: "",
+          phone: "",
+          address: "",
         });
         togglePopup(); // Close the popup
       } else {
-        console.log("Contact saving failed");
+        console.log("Employee saving failed");
       }
     } catch (error) {
-      console.error("An error occurred while saving the contact", error);
+      console.error("An error occurred while saving the Employee", error);
     }
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setContact((prevContact) => ({
-      ...prevContact,
-      [name]: value,
-    }));
+
+    if (name === "dateOfBirth") {
+      // Format the date to "yyyy-MM-dd" format
+      const formattedDate = new Date(value).toISOString().split("T")[0];
+      setContact((prevContact) => ({
+        ...prevContact,
+        [name]: formattedDate,
+      }));
+    } else {
+      setContact((prevContact) => ({
+        ...prevContact,
+        [name]: value,
+      }));
+    }
   };
 
   const handleClose = () => {
     setContact({
-      userID: 0,
+      userID: userId,
       firstName: "",
       lastName: "",
       email: "",
-      gender: "",
-      city: "",
+      dateOfBirth: "",
+      position: "",
+      phone: "",
+      address: "",
     });
     setUser(null); // Clear the edit user
     togglePopup(); // Close the popup
   };
 
+  console.log(contact);
   return (
     <>
       <div className="overlay" onClick={handleClose}></div>
@@ -90,7 +119,7 @@ const ContactPopup = ({ togglePopup, user, setUser }) => {
         <button onClick={handleClose} className="contact-form__close">
           Close
         </button>
-        <h2>{contact.userID === 0 ? "Add Contact" : "Edit Contact"}</h2>
+        <h2>{contact.firstName ? "Edit Employee" : "Add Employee"}</h2>
         <form onSubmit={handleSubmit} className="contact-form__form">
           <div>
             <label htmlFor="firstName">First Name:</label>
@@ -126,23 +155,45 @@ const ContactPopup = ({ togglePopup, user, setUser }) => {
             />
           </div>
           <div>
-            <label htmlFor="gender">Gender:</label>
+            <label htmlFor="dateOfBirth">Date of Birth:</label>
             <input
-              type="text"
-              id="gender"
-              name="gender"
-              value={contact.gender}
+              type="date"
+              id="dateOfBirth"
+              name="dateOfBirth"
+              value={contact.dateOfBirth}
               onChange={handleChange}
               required
             />
           </div>
           <div>
-            <label htmlFor="city">City:</label>
+            <label htmlFor="position">Position:</label>
             <input
               type="text"
-              id="city"
-              name="city"
-              value={contact.city}
+              id="position"
+              name="position"
+              value={contact.position}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="phone">Phone:</label>
+            <input
+              type="text"
+              id="phone"
+              name="phone"
+              value={contact.phone}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="address">Address:</label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              value={contact.address}
               onChange={handleChange}
               required
             />

@@ -6,7 +6,7 @@ export default function Header() {
     <header className="header">
       <ul className="header__list">
         <li>
-          <Link to="/">Contacts</Link>
+          <Link to="/">Employees</Link>
         </li>
         <li>
           <Link to="/login">Login</Link>

@@ -1,27 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "D:\\POBRANE\\MojeProjektyStronInterentowych\\ProjektyIOP\\DotnetProject2\\Projekt_IOP-master\\Projekt_IOP-master\\webapi\\webapi.csproj": {}
+    "C:\\STUDIA\\projekt_zespolowy\\webapi\\webapi.csproj": {}
   },
   "projects": {
-    "D:\\POBRANE\\MojeProjektyStronInterentowych\\ProjektyIOP\\DotnetProject2\\Projekt_IOP-master\\Projekt_IOP-master\\webapi\\webapi.csproj": {
+    "C:\\STUDIA\\projekt_zespolowy\\webapi\\webapi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\POBRANE\\MojeProjektyStronInterentowych\\ProjektyIOP\\DotnetProject2\\Projekt_IOP-master\\Projekt_IOP-master\\webapi\\webapi.csproj",
+        "projectUniqueName": "C:\\STUDIA\\projekt_zespolowy\\webapi\\webapi.csproj",
         "projectName": "webapi",
-        "projectPath": "D:\\POBRANE\\MojeProjektyStronInterentowych\\ProjektyIOP\\DotnetProject2\\Projekt_IOP-master\\Projekt_IOP-master\\webapi\\webapi.csproj",
-        "packagesPath": "C:\\Users\\NORBERT\\.nuget\\packages\\",
-        "outputPath": "D:\\POBRANE\\MojeProjektyStronInterentowych\\ProjektyIOP\\DotnetProject2\\Projekt_IOP-master\\Projekt_IOP-master\\webapi\\obj\\",
+        "projectPath": "C:\\STUDIA\\projekt_zespolowy\\webapi\\webapi.csproj",
+        "packagesPath": "C:\\Users\\karau\\.nuget\\packages\\",
+        "outputPath": "C:\\STUDIA\\projekt_zespolowy\\webapi\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\NORBERT\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\karau\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -90,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     }
