@@ -29,7 +29,7 @@ namespace webapi.Controllers
         {
             try
             {
-                String password = user.Password;
+                String password = Password.hashPassword(user.Password);
                 var dbUser = _context.Users.Where(u => u.Login == user.Login && u.Password == password).Select(u => new
                 {
                     u.Userid,

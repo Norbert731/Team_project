@@ -10,7 +10,6 @@ namespace webapi.Models
         }
 
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<ContactsList> ContactsList { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -35,39 +34,7 @@ namespace webapi.Models
                     .HasColumnName("password");
             });
 
-            modelBuilder.Entity<ContactsList>(entity =>
-            {
-                entity.HasKey(e => e.ContactID).HasName("PK__ContactsList__ContactID");
-
-                entity.ToTable("ContactsList");
-
-                entity.Property(e => e.ContactID).ValueGeneratedOnAdd();
-                entity.Property(e => e.FirstName)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("FirstName");
-                entity.Property(e => e.LastName)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("LastName");
-                entity.Property(e => e.Email)
-                    .HasMaxLength(100)
-                    .IsUnicode(false)
-                    .HasColumnName("Email");
-                entity.Property(e => e.Gender)
-                    .HasMaxLength(10)
-                    .IsUnicode(false)
-                    .HasColumnName("Gender");
-                entity.Property(e => e.City)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("City");
-
-                entity.HasOne(d => d.User)
-                    .WithMany()
-                    .HasForeignKey(d => d.UserID)
-                    .HasConstraintName("FK_ContactsList_Users_UserID");
-            });
+           
 
             modelBuilder.Entity<Employee>(entity =>
             {
