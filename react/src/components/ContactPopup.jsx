@@ -110,7 +110,10 @@ const ContactPopup = ({ togglePopup, user, setUser, updateUsersState }) => {
     <>
       <div className="overlay" onClick={handleClose}></div>
       <div className="contact-form">
-        <button onClick={handleClose} className="contact-form__close">
+        <button
+          onClick={handleClose}
+          className="contact-form__close secondary-btn "
+        >
           Close
         </button>
         <h2>{contact.firstName ? "Edit Employee" : "Add Employee"}</h2>
