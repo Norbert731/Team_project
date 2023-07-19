@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 
-const ContactPopup = ({ togglePopup, user, setUser }) => {
+const ContactPopup = ({ togglePopup, user, setUser, updateUsersState }) => {
   const token = localStorage.getItem("token");
   const decodedToken = token ? jwtDecode(token) : null;
   const userId = decodedToken ? decodedToken.userID : "";
-
   const [contact, setContact] = useState({
     userID: userId,
     firstName: "",
@@ -29,11 +28,6 @@ const ContactPopup = ({ togglePopup, user, setUser }) => {
       }));
     }
   }, [user]);
-  useEffect(() => {
-    if (!user) {
-      console.log(contact);
-    }
-  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,8 +41,6 @@ const ContactPopup = ({ togglePopup, user, setUser }) => {
           { ...contact, employeeID: contact.employeeID }
         );
       } else {
-        console.log("post");
-        console.log(user);
         // New contact
         response = await axios.post(
           `https://localhost:7265/api/Employees`,
@@ -69,7 +61,9 @@ const ContactPopup = ({ togglePopup, user, setUser }) => {
           phone: "",
           address: "",
         });
+        setUser(null); // Clear the edit user
         togglePopup(); // Close the popup
+        updateUsersState();
       } else {
         console.log("Employee saving failed");
       }
