@@ -6,9 +6,9 @@ namespace webapi.Models;
 
 public partial class User
 {
-    public int Userid { get; set; }
 
-    
+    public int Userid { get;  }
+
     public string Login { get; set; }
 
 
